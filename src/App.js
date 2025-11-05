@@ -21,7 +21,7 @@ export default function App() {
   };
 
   const [currentArchetype, setCurrentArchetype] = useState("grounded");
-  const [history, setHistory] = useState([]);
+  // const [history, setHistory] = useState([]); // removed for now
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,10 +29,6 @@ export default function App() {
       const nextIndex = Math.floor(Math.random() * keys.length);
       const nextArchetype = keys[nextIndex];
       setCurrentArchetype(nextArchetype);
-      setHistory((prev) => [
-        ...prev.slice(-49),
-        { archetype: nextArchetype, timestamp: new Date() },
-      ]);
     }, 5000);
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
