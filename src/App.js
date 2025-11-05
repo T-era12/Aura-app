@@ -19,7 +19,7 @@ export default function App() {
       price: "$52",
     },
   };
-
+/ eslint-disable-next-line react-hooks/exhaustive-deps
   const [currentArchetype, setCurrentArchetype] = useState("grounded");
 
   useEffect(() => {
