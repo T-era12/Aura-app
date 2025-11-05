@@ -21,7 +21,6 @@ export default function App() {
   };
 
   const [currentArchetype, setCurrentArchetype] = useState("grounded");
-  // const [history, setHistory] = useState([]); // removed for now
 
   useEffect(() => {
     const interval = setInterval(() => {
