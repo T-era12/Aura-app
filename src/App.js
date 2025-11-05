@@ -85,13 +85,16 @@ export default function App() {
   const controls = useAnimation();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const keys = Object.keys(archetypes);
-      const next = keys[Math.floor(Math.random() * keys.length)];
-      setCurrentArchetype(next);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  const interval = setInterval(() => {
+    const keys = Object.keys(archetypes);
+    const nextIndex = Math.floor(Math.random() * keys.length);
+    const nextArchetype = keys[nextIndex];
+    setCurrentArchetype(nextArchetype);
+    setHistory(prev => [...prev.slice(-49), { archetype: nextArchetype, timestamp: new Date() }]);
+  }, 5000);
+  return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
   const current = archetypes[currentArchetype];
 
