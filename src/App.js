@@ -83,6 +83,7 @@ export default function App() {
   const [currentArchetype, setCurrentArchetype] = useState("grounded");
   const [activeTab, setActiveTab] = useState("dashboard");
   const controls = useAnimation();
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
   const interval = setInterval(() => {
