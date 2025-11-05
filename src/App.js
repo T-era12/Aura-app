@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 export default function App() {
   // 🌿 Archetype data
-  const archetypes = {
+  const archetypes = useMemo(() => ({
     grounded: {
       name: "The Grounded Soul",
       message: "You’ve found your center. Let’s help you stay rooted in peace.",
@@ -35,14 +35,13 @@ export default function App() {
       message: "In your darkness lies your greatest rebirth.",
       price: "$56",
     },
-  };
+  }), []);
 
   // 🌀 State setup
   const [currentArchetype, setCurrentArchetype] = useState("grounded");
   const [activeTab, setActiveTab] = useState("dashboard");
 
   // 🔁 Mood auto-shift
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const interval = setInterval(() => {
       const keys = Object.keys(archetypes);
@@ -52,7 +51,7 @@ export default function App() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [archetypes]);
 
   const current = archetypes[currentArchetype];
 
@@ -129,4 +128,4 @@ export default function App() {
       )}
     </div>
   );
-              }
+}
