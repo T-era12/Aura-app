@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AuraLogo from "./assets/AuraLogo.png"; // ✅ make sure this file exists
 
 export default function App() {
   // 🌿 Archetype data
@@ -26,7 +27,8 @@ export default function App() {
     },
     explorer: {
       name: "The Restless Explorer",
-      message: "The world is calling — but remember, discovery begins within.",
+      message:
+        "The world is calling — but remember, discovery begins within.",
       price: "$53",
     },
     shadow: {
@@ -40,38 +42,46 @@ export default function App() {
   const [currentArchetype, setCurrentArchetype] = useState("grounded");
   const [activeTab, setActiveTab] = useState("dashboard");
 
-  // 🔁 Mood auto-shift (fixing ESLint dependency warning)
+  // 🔁 Mood auto-shift
   useEffect(() => {
     const interval = setInterval(() => {
       const keys = Object.keys(archetypes);
       const nextIndex = Math.floor(Math.random() * keys.length);
-      const nextArchetype = keys[nextIndex];
-      setCurrentArchetype(nextArchetype);
-    }, 5000);
-
+      setCurrentArchetype(keys[nextIndex]);
+    }, 6000);
     return () => clearInterval(interval);
-  }, [archetypes]); // ✅ include dependency to satisfy ESLint
+  }, [archetypes]);
 
   const current = archetypes[currentArchetype];
 
   // 🌙 UI
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100 flex flex-col items-center justify-start text-center p-6">
-      <h1 className="text-4xl font-bold mb-4 text-gray-800">AURA Dashboard</h1>
-      <p className="text-lg text-gray-600 mb-6">
+    <div className="min-h-screen bg-gradient-to-br from-purple-200 via-indigo-300 to-indigo-500 flex flex-col items-center justify-start text-center p-8">
+      {/* 🌸 Floating Logo */}
+      <img
+        src={AuraLogo}
+        alt="AURA Logo"
+        className="w-24 mb-4 animate-pulse drop-shadow-lg"
+      />
+
+      {/* ✨ Header */}
+      <h1 className="text-5xl font-extrabold mb-2 text-white tracking-wide drop-shadow-lg">
+        AURA Dashboard
+      </h1>
+      <p className="text-lg text-indigo-100 mb-8">
         Welcome to your mood-shifting experience 🌙
       </p>
 
       {/* 🔹 Tab Navigation */}
-      <div className="flex flex-wrap gap-2 justify-center mb-8">
+      <div className="flex flex-wrap gap-3 justify-center mb-8">
         {["dashboard", "checkout", "about"].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 rounded-lg font-semibold ${
+            className={`px-5 py-2 rounded-lg font-semibold transition ${
               activeTab === tab
-                ? "bg-indigo-500 text-white shadow-md"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                ? "bg-white text-indigo-600 shadow-lg scale-105"
+                : "bg-indigo-200 text-indigo-800 hover:bg-indigo-300"
             }`}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -81,12 +91,14 @@ export default function App() {
 
       {/* 🔸 Dashboard Tab */}
       {activeTab === "dashboard" && (
-        <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md">
-          <h2 className="text-2xl font-semibold mb-2">{current.name}</h2>
+        <div className="bg-white/90 shadow-xl rounded-3xl p-8 w-full max-w-md">
+          <h2 className="text-3xl font-semibold mb-2 text-indigo-700">
+            {current.name}
+          </h2>
           <p className="text-gray-700 mb-4">{current.message}</p>
           <p className="font-bold text-gray-900">{current.price}</p>
           <button
-            className="mt-6 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-xl shadow-md"
+            className="mt-6 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-6 rounded-xl shadow-md transition"
             onClick={() => alert("Sync Your Soul ritual started!")}
           >
             Start Sync Your Soul
@@ -96,18 +108,20 @@ export default function App() {
 
       {/* 🛒 Checkout Tab */}
       {activeTab === "checkout" && (
-        <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md">
-          <h2 className="text-2xl font-semibold mb-4">Checkout</h2>
+        <div className="bg-white/90 shadow-xl rounded-3xl p-8 w-full max-w-md">
+          <h2 className="text-2xl font-semibold mb-4 text-indigo-700">
+            Checkout
+          </h2>
           <p className="text-gray-700 mb-2">
             Selected Archetype: <strong>{current.name}</strong>
           </p>
           <p className="text-gray-700 mb-4">Price: {current.price}</p>
           <p className="text-sm text-gray-500 mb-4">
-            Taxes and shipping will be automatically calculated at checkout
-            based on your location.
+            Taxes and shipping will be automatically calculated based on your
+            location.
           </p>
           <button
-            className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-xl shadow-md"
+            className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-xl shadow-md transition"
             onClick={() => alert("Redirecting to secure payment...")}
           >
             Proceed to Payment
@@ -117,8 +131,10 @@ export default function App() {
 
       {/* ℹ️ About Tab */}
       {activeTab === "about" && (
-        <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md">
-          <h2 className="text-2xl font-semibold mb-2">About AURA</h2>
+        <div className="bg-white/90 shadow-xl rounded-3xl p-8 w-full max-w-md">
+          <h2 className="text-2xl font-semibold mb-4 text-indigo-700">
+            About AURA
+          </h2>
           <p className="text-gray-700">
             AURA is an emotional wellness experience that adapts to your mood
             and offers ritual-based self-care inspired by archetypal balance.
@@ -127,4 +143,4 @@ export default function App() {
       )}
     </div>
   );
-        }
+}
