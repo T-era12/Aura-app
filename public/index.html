@@ -1,25 +1,37 @@
-npm run build
-npm warn config production Use `--omit=dev` instead.
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="AURA — an adaptive emotional wellness app that evolves with your energy."
+    />
+    <title>AURA</title>
 
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
 
-> aura-app@1.0.0 build
-> react-scripts build
+    <!-- Favicon (you can replace with your logo later) -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
 
+    <!-- 🌿 Root element where React mounts -->
+    <div id="root"></div>
 
-Creating an optimized production build...
-
-
-Treating warnings as errors because process.env.CI = true.
-Most CI servers set it automatically.
-
-
-Failed to compile.
-
-
-[eslint] 
-src/App.js
-  Line 94:6:  React Hook useEffect has a missing dependency: 'archetypes'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-
-
-
-process "npm run build" did not complete successfully: exit code: 1
+    <!-- Optional gradient background -->
+    <style>
+      body {
+        background: linear-gradient(135deg, #ffffff, #f7f7fb, #eceef3);
+        min-height: 100vh;
+        margin: 0;
+      }
+    </style>
+  </body>
+</html>
