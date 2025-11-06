@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function App() {
   // 🌿 Archetype data
-  const archetypes = useMemo(() => ({
+  const archetypes = {
     grounded: {
       name: "The Grounded Soul",
       message: "You’ve found your center. Let’s help you stay rooted in peace.",
@@ -26,8 +26,7 @@ export default function App() {
     },
     explorer: {
       name: "The Restless Explorer",
-      message:
-        "The world is calling — but remember, discovery begins within.",
+      message: "The world is calling — but remember, discovery begins within.",
       price: "$53",
     },
     shadow: {
@@ -35,13 +34,13 @@ export default function App() {
       message: "In your darkness lies your greatest rebirth.",
       price: "$56",
     },
-  }), []);
+  };
 
   // 🌀 State setup
   const [currentArchetype, setCurrentArchetype] = useState("grounded");
   const [activeTab, setActiveTab] = useState("dashboard");
 
-  // 🔁 Mood auto-shift
+  // 🔁 Mood auto-shift (fixing ESLint dependency warning)
   useEffect(() => {
     const interval = setInterval(() => {
       const keys = Object.keys(archetypes);
@@ -51,7 +50,7 @@ export default function App() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [archetypes]);
+  }, [archetypes]); // ✅ include dependency to satisfy ESLint
 
   const current = archetypes[currentArchetype];
 
@@ -128,4 +127,4 @@ export default function App() {
       )}
     </div>
   );
-}
+        }
