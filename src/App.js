@@ -103,6 +103,16 @@ export default function App() {
           >
             Start Sync Your Soul
           </button>
+
+          {/* 🛍 Shop Now Button */}
+          <button
+            className="mt-4 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-semibold py-2 px-6 rounded-xl shadow-lg transition-transform transform hover:scale-105"
+            onClick={() =>
+              window.open("https://yourshopurl.com", "_blank")
+            }
+          >
+            🛍️ Shop Now
+          </button>
         </div>
       )}
 
