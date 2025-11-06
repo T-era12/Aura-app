@@ -1,0 +1,66 @@
+/* 🌿 AURA App Base Styles */
+
+/* Reset and smooth rendering */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App background and text setup */
+body {
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(to bottom right, #ffffff, #f7f7fb, #eceef3);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+/* Button base styles */
+button {
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+
+/* Card container styling */
+div.bg-white {
+  background-color: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Typography balance */
+h1, h2, h3, h4 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+p {
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Subtle animation for mood shift */
+@keyframes fadeShift {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeShift 0.8s ease forwards;
+}
